@@ -1,35 +1,35 @@
 const startBtn = document.querySelector("button")
-const generatedNumbers = []
-const guessedNumbers= []
 
 
 startBtn.addEventListener('click', function(){
-    startGame(generatedNumbers)
+    startGame()
 })
 
-function startGame(arr){
+function startGame(){
     const numberDisplay = document.querySelector("#number-display")
+    const guessedNumbers= []
+    const generatedNumbers = []
+
     numberDisplay.innerHTML = ""
     for (let index = 0; index < 5; index++) {
         let newNum = makeRandomInt(1, 100);
-        console.log(newNum)
-        while(arr.includes(newNum)){
+        while(generatedNumbers.includes(newNum)){
             newNum = makeRandomInt(1, 100);
         }
-        arr.push(newNum)
+        generatedNumbers.push(newNum)
     }
-    numberDisplay.innerHTML = arr.toString()
+    numberDisplay.innerHTML = generatedNumbers.toString()
 
 
-    // // setTimeout(() => {
-    // //     numberDisplay.innerHTML=""
-    // // }, 999);
-
+    // ! il doppio setTimeout serve per evitare che il prompt freezi lo schermo impedendo ai numeri di scomparire
+    setTimeout(() => {
+        numberDisplay.innerHTML=""
+    }, 4500);
 
     setTimeout(() => {
         guess(numberDisplay, generatedNumbers, guessedNumbers)
     
-    }, 1000);
+    }, 5000);
 }
 
 function guess(displayEl, arr1, arr2){
