@@ -1,7 +1,7 @@
 const startBtn = document.querySelector("button")
 const generatedNumbers = []
 const guessedNumbers= []
-let gameOver = false
+
 
 startBtn.addEventListener('click', function(){
     startGame(generatedNumbers)
@@ -30,10 +30,6 @@ function startGame(arr){
         guess(numberDisplay, generatedNumbers, guessedNumbers)
     
     }, 1000);
-
-    if(gameOver){
-
-    }
 }
 
 function guess(displayEl, arr1, arr2){
@@ -42,15 +38,21 @@ function guess(displayEl, arr1, arr2){
         let guessedNum = Number.parseInt(prompt("Guess a number..."),10);
         arr2.push(guessedNum);
     }
-    
+
+    let gameOver
     arr2.forEach(num => {
         if(!(arr1.includes(num))){
-            gameOver = true
-            return false
+            gameOver = true        
         }else{
             gameOver = false
         }
-    });
+    })
+    
+    if(gameOver){
+        displayEl.innerHTML = "Hai perso!"
+    }else if(gameOver===false){
+        displayEl.innerHTML = "Hai vinto!"
+    };
 }
 
 
