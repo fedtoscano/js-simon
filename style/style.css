@@ -1,0 +1,15 @@
+header{
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#number-display{
+    font-size: 4rem;
+}
